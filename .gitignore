@@ -1,0 +1,26 @@
+# ===== .NET =====
+**/bin/
+backend_.Net_9\ReTypeAllByMe\bin
+backend_.Net_9\ReTypeAllByMe\obj
+**/obj/
+.vs/
+**/appsettings.Development.json
+*.user
+*.suo
+*.db
+*.pfx
+*.sln.docstates
+
+# ===== Node / Angular =====
+angular_iti_project/node_modules/
+angular_iti_project/dist/
+angular_iti_project/.angular/cache/
+angular_iti_project/.angular/
+angular_iti_project/node_modules/.cache
+
+# ===== Global =====
+*.env
+*.tsbuildinfo
+*.log
+.DS_Store
+Thumbs.db

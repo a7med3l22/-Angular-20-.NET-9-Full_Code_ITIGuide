@@ -1,0 +1,123 @@
+[
+    {
+      "Name": "Double Caramel Frappuccino",
+      "Description": "Rich caramel flavor with whipped cream topping.",
+      "Price": 200,
+      "PictureUrl": "images/products/sb-ang1.png",
+      "CategoryId": 1,
+      "BrandId": 1
+    },
+    {
+      "Name": "Mocha Cookie Crumble",
+      "Description": "Chocolate, cookies, and cream in a cup.",
+      "Price": 180,
+      "PictureUrl": "images/products/sb-ang2.png",
+      "CategoryId": 1,
+      "BrandId": 2
+    },
+    {
+      "Name": "Vanilla Sweet Cream Cold Brew",
+      "Description": "Cold brew with vanilla sweet cream.",
+      "Price": 170,
+      "PictureUrl": "images/products/sb-ang3.png",
+      "CategoryId": 1,
+      "BrandId": 3
+    },
+    {
+      "Name": "Pumpkin Spice Latte",
+      "Description": "Pumpkin flavor with cinnamon and nutmeg.",
+      "Price": 190,
+      "PictureUrl": "images/products/sb-ang4.png",
+      "CategoryId": 2,
+      "BrandId": 2
+    },
+    {
+      "Name": "Iced Brown Sugar Oatmilk",
+      "Description": "Oatmilk and brown sugar for a healthy treat.",
+      "Price": 160,
+      "PictureUrl": "images/products/sb-ang5.png",
+      "CategoryId": 2,
+      "BrandId": 1
+    },
+    {
+      "Name": "Espresso Macchiato",
+      "Description": "Bold espresso with a dollop of foam.",
+      "Price": 150,
+      "PictureUrl": "images/products/sb-ang6.png",
+      "CategoryId": 3,
+      "BrandId": 3
+    },
+    {
+      "Name": "Flat White",
+      "Description": "Smooth espresso with steamed milk.",
+      "Price": 165,
+      "PictureUrl": "images/products/sb-ang7.png",
+      "CategoryId": 3,
+      "BrandId": 2
+    },
+    {
+      "Name": "Caramel Macchiato",
+      "Description": "Espresso with vanilla and caramel drizzle.",
+      "Price": 175,
+      "PictureUrl": "images/products/sb-ang8.png",
+      "CategoryId": 3,
+      "BrandId": 1
+    },
+    {
+      "Name": "Caffè Americano",
+      "Description": "Espresso diluted with hot water.",
+      "Price": 140,
+      "PictureUrl": "images/products/sb-ang9.png",
+      "CategoryId": 3,
+      "BrandId": 2
+    },
+    {
+      "Name": "Blonde Roast Coffee",
+      "Description": "Lighter roast with mellow flavor.",
+      "Price": 130,
+      "PictureUrl": "images/products/sb-ang10.png",
+      "CategoryId": 3,
+      "BrandId": 3
+    },
+    {
+      "Name": "Iced Shaken Espresso",
+      "Description": "Espresso shaken with ice and syrup.",
+      "Price": 155,
+      "PictureUrl": "images/products/sb-ang11.png",
+      "CategoryId": 4,
+      "BrandId": 1
+    },
+    {
+      "Name": "Cinnamon Dolce Latte",
+      "Description": "Cinnamon flavor with espresso and milk.",
+      "Price": 185,
+      "PictureUrl": "images/products/sb-ang12.png",
+      "CategoryId": 4,
+      "BrandId": 2
+    },
+    {
+      "Name": "Toasted White Chocolate Mocha",
+      "Description": "Sweet mocha with white chocolate flavor.",
+      "Price": 195,
+      "PictureUrl": "images/products/sb-ang13.png",
+      "CategoryId": 4,
+      "BrandId": 3
+    },
+    {
+      "Name": "Cold Brew with Salted Cream",
+      "Description": "Cold brew topped with salted cream foam.",
+      "Price": 175,
+      "PictureUrl": "images/products/sb-ang14.png",
+      "CategoryId": 4,
+      "BrandId": 2
+    },
+    {
+      "Name": "Matcha Green Tea Latte",
+      "Description": "Green tea matcha with milk.",
+      "Price": 165,
+      "PictureUrl": "images/products/sb-ang15.png",
+      "CategoryId": 5,
+      "BrandId": 1
+    }
+  ]
+  

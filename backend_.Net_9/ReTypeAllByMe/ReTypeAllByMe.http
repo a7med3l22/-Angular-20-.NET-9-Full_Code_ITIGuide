@@ -1,0 +1,6 @@
+@ReTypeAllByMe_HostAddress = http://localhost:5111
+
+GET {{ReTypeAllByMe_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

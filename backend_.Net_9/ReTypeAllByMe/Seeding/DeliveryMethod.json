@@ -1,0 +1,62 @@
+[
+  {
+    "ShortName": "Standard",
+    "Description": "Standard delivery (3-5 days)",
+    "Cost": 10.00,
+    "DeliveryTime": "3-5 days"
+  },
+  {
+    "ShortName": "Express",
+    "Description": "Express delivery (1-2 days)",
+    "Cost": 20.00,
+    "DeliveryTime": "1-2 days"
+  },
+  {
+    "ShortName": "Overnight",
+    "Description": "Overnight delivery",
+    "Cost": 30.00,
+    "DeliveryTime": "1 day"
+  },
+  {
+    "ShortName": "Economy",
+    "Description": "Economy delivery (5-7 days)",
+    "Cost": 5.00,
+    "DeliveryTime": "5-7 days"
+  },
+  {
+    "ShortName": "Same Day",
+    "Description": "Delivery on the same day",
+    "Cost": 50.00,
+    "DeliveryTime": "Same day"
+  },
+  {
+    "ShortName": "Morning",
+    "Description": "Delivered by morning",
+    "Cost": 15.00,
+    "DeliveryTime": "Next morning"
+  },
+  {
+    "ShortName": "Evening",
+    "Description": "Delivered in the evening",
+    "Cost": 12.00,
+    "DeliveryTime": "Evening"
+  },
+  {
+    "ShortName": "Weekend",
+    "Description": "Weekend delivery",
+    "Cost": 25.00,
+    "DeliveryTime": "Weekend"
+  },
+  {
+    "ShortName": "Pickup",
+    "Description": "Pickup from store",
+    "Cost": 19.00,
+    "DeliveryTime": "Customer pickup"
+  },
+  {
+    "ShortName": "Drone",
+    "Description": "Delivered by drone",
+    "Cost": 100.00,
+    "DeliveryTime": "Within 1 hour"
+  }
+]
