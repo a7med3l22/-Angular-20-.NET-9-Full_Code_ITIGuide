@@ -1,0 +1,16 @@
+    
+    <div>
+    <h1  [appChangeColor]="['red','brown']"  externalColor="gray" [changeprice]="TotalOrderprice" class="mb-3">  
+            Total Order price: {{TotalOrderprice}}   
+            <!-- طول م انا جوه الكمبوننت ده وبدلت ف الابناء هيفضل السعر موجود ومش هيتحمل الكمبوننت من اول وجديد مهم جدا  -->
+    </h1> 
+<!-- <app-order (OnTotalOrderpriceChanged)="totalOrderprice=$event"></app-order> -->
+
+<router-outlet></router-outlet> 
+<!-- اكني بقوله هنا هيحصل تبديل بين الكمبوننت علي حسب الراوتس الل انا معرفهم  -->
+
+    </div>
+    
+ <!-- <div *ngIf="!isConnect">
+<h1 [appChangeColor] externalColor >Error While Getting Data From Backend</h1>
+ </div> -->

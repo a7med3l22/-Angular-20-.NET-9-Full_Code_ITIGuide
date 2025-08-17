@@ -1,0 +1,194 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+
+    <!-- Previous Button -->
+    <div class="col-auto mb-3">
+      <button
+        [class.bg-danger]="isPerviousDisabled"
+        [disabled]="isPerviousDisabled"
+        class="btn btn-outline-dark mt-2"
+        (click)="previous()"
+      >
+        Previous
+      </button>
+    </div>
+
+    <!-- Product Card -->
+    <div class="col-md-4 mb-3">
+      <div class="card h-100">
+        <img
+          [src]="product.pictureUrl +'?T='+dateTime"
+          style="height: 300px; object-fit: cover"
+          class="card-img-top"
+          [alt]="[product.pictureUrl.split('/')[product.pictureUrl.split('/').length-1]]"
+        />
+
+        <div
+          class="card-body d-flex flex-column"
+          [appChangeColor]="['brown', 'gray']"
+          externalColor="purple"
+        >
+          <h5
+            class="card-title mb-3"
+            [ngClass]="product.quantity < 4 ? 'text-danger' : 'text-success'"
+          >
+            {{ product.name }} ID: {{ product.id }}
+          </h5>
+
+          <p
+            class="card-text"
+            [ngStyle]="product.quantity > 3
+              ? { color: 'green', fontSize: 'large' }
+              : { color: 'red', fontSize: 'small' }"
+          >
+            Price: {{ product.price }}
+          </p>
+
+          <div
+            class="card-text"
+            [style.color]="product.quantity > 3 ? 'aqua' : 'red'"
+          >
+            @switch(product.quantity) {
+              @case(1) { <h5>Last Item</h5> }
+              @case(2) { <h5>Last Two Items</h5> }
+              @case(3) { <h5>Last Three Items</h5> }
+              @default {
+                <h5>Quantity: {{ product.quantity }}</h5>
+              }
+            }
+          </div>
+
+          <div class="mt-auto">
+            <label>BUY quantity:</label>
+            <input
+              type="number"
+              class="form-control mb-2"
+              [(ngModel)]="product.buyQuantity"
+              [min]="0"
+              [max]="product.quantity"
+              [ngStyle]="product.quantity < 4
+                ? { color: 'red', backgroundColor: '#e499aa' }
+                : { color: 'green', backgroundColor: '#ace6ac' }"
+            />
+
+            <label>EDIT quantity:</label>
+            <input
+              type="number"
+              class="form-control mb-2"
+              [(ngModel)]="product.quantity"
+              [min]="1"
+              [max]="1000"
+              [ngStyle]="product.quantity < 4
+                ? { color: 'red', backgroundColor: '#e499aa' }
+                : { color: 'green', backgroundColor: '#ace6ac' }"
+            />
+
+            <label>REMAIN quantity:</label>
+            <input
+              type="number"
+              class="form-control mb-3"
+              [value]="product.buyQuantity != null
+                ? product.quantity - product.buyQuantity
+                : product.quantity"
+              disabled
+              [ngStyle]="product.quantity < 4
+                ? { color: 'red', backgroundColor: '#e499aa' }
+                : { color: 'green', backgroundColor: '#ace6ac' }"
+            />
+
+            <button
+              class="btn w-100 mb-2"
+              [ngClass]="product.quantity > 3 ? 'btn-dark' : 'btn-danger'"
+              (click)="getProductDetails(product.price, product.buyQuantity ?? 0, product.id)"
+            >
+              Buy
+            </button>
+
+            <button
+              class="btn btn-outline-dark w-100"
+              (click)="back()"
+            >
+              Back
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Next Button -->
+    <div class="col-auto mb-3">
+      <button
+        [class.bg-danger]="isNextDisabled"
+        [disabled]="isNextDisabled"
+        class="btn btn-outline-dark mt-2"
+        (click)="next()"
+      >
+        Next
+      </button>
+    </div>
+
+  </div>
+</div>
+
+         <!-- <div class="container">
+<div class="row justify-content-center align-items-center">
+
+  <div class="col-auto mb-3"> -->
+                         <!-- <button [class.bg-danger]="isPerviousDisabled" [disabled]="isPerviousDisabled" class="btn btn-outline-dark mt-2" (click)="previous()">Brevious</button> -->
+                         <!-- <button [class.bg-danger]="isPerviousDisabled"[disabled]="currentindexId==0" class="btn btn-outline-dark mt-2" (click)="previous()">Brevious</button> -->
+                         <!-- <button [class.bg-danger]="isPerviousDisabled" [disabled]="isPerviousDisabled"class="btn btn-outline-dark mt-2" (click)="previous()">Brevious</button> -->
+
+                        <!-- </div>
+                     <div class="col-md-4 mb-3" >            
+                        <div  class="card h-100" >
+                            
+                        <img  [src]="product.pictureUrl" style=" height: 300px;" class="card-img-top" alt="Product Picture"> -->
+
+                        <!-- <div  class="card-body d-flex flex-column" [style.background]="product.quantity<4?'rgb(246, 112, 112)':'rgb(117, 235, 117)'"> -->
+                     <!-- <div [appChangeColor]="['blue','brown']" externalColor="gray" externalColor class="card-body d-flex flex-column"> -->
+                           <!-- أي عنصر HTML عليه Directive يعتبر هو الأب المباشر للـ Directive. -->
+                        <!-- <h5 class="card-title" [class.text-danger]="product.quantity<4">{{product.name}} {{i+1}}</h5> -->
+                            <!-- <h5  class="card-title" [ngClass]="product.quantity<4?'text-danger mb-4':'text-success mb-5'">{{product.name}}</h5> -->
+                            <!-- <h5> ID: {{product.id}}</h5> -->
+                            <!-- <p class="card-text"  [ngStyle]="product.quantity>3?{color:'green','font-size':'large'}:{color:'red','font-size':'small'}" >price: {{product.price}}</p> -->
+                            <!-- <p class="card-text">Count: {{c}}</p> -->
+                            <!-- <p class="card-text"   *ngIf="product.quantity>3;else elseBlock">quantity: {{product.quantity}}</p>
+                                 <ng-template #elseBlock> <div>Items Is About to run out <h5>quantity: {{product.quantity}}</h5></div> </ng-template>-->
+                                 <!-- <div class="card-text" [style.color]="product.quantity>3?'aqua':'red'">  -->
+                                    <!-- <div  [ngSwitch]="product.quantity">
+                                            <h5 *ngSwitchCase=1> Last  Item </h5>
+                                            <h5 *ngSwitchCase=2> Last Two Items </h5>
+                                            <h5 *ngSwitchCase=3>Last Three Items </h5>
+                                            <h5 *ngSwitchDefault>quantity: {{product.quantity}}</h5>
+                                    </div> -->
+                                    <!-- @switch (product.quantity) 
+                                    {
+                                    @case (1) {<h5>Last  Item</h5>}
+                                    @case (2) {<h5> Last Two Items</h5>}
+                                    @case (3) {<h5>Last Three Items </h5>}
+                                    @default {<h5>quantity: {{product.quantity}}</h5>}
+                                    }
+                                 </div>
+                                 <h5></h5>
+                                 <div class="mt-auto">
+                                BUY quantity: <input type="number"  [(ngModel)]="product.buyQuantity"  [ngStyle]="product.quantity<4?{color:'red','background-color':'rgb(228, 153, 170)'}:{color:'green','background-color': 'rgb(172, 230, 172)'}"  class="form-control mb-2" min="0" [max]="product.quantity" #quantity>
+                                EDIT quantity:<input type="number" [(ngModel)]="product.quantity" [ngStyle]="product.quantity<4?{color:'red','background-color':'rgb(228, 153, 170)'}:{color:'green','background-color': 'rgb(172, 230, 172)'}"  class="form-control mb-2" min="1" [max]="1000">
+                                Remain quantity:<input type="number"  disabled [value]=" product.buyQuantity!= null?product.quantity- product.buyQuantity:product.quantity"  [ngStyle]="product.quantity<4?{color:'red','background-color':'rgb(228, 153, 170)'}:{color:'green','background-color': 'rgb(172, 230, 172)'}"  class="form-control mb-2" min="1" [max]="1000">
+                                <button class="btn  w-100" [ngClass]="product.quantity>3?'btn-dark':'btn-danger'" (click)="getProductDetails(product.price,product.buyQuantity??0,product.id)">Buy</button>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-dark mt-2" (click)="backToOrder()">Back</button> -->
+                        <!-- <button #nextButton class="btn btn-outline-dark mt-2"(click)="next()" >Next</button>
+                        <button #perviousButton class="btn btn-outline-dark mt-2" (click)="previous()">Brevious</button> -->
+<!--                         
+                        </div>
+                     </div>
+  <div class="col-auto mb-3"> -->
+                         <!-- <button [class.bg-danger]="isNextDisabled" [disabled]="isNextDisabled" class="btn btn-outline-dark mt-2"(click)="next()" >Next</button> -->
+                         <!-- <button [class.bg-danger]="isNextDisabled" [disabled]="currentindexId==productsLength-1" class="btn btn-outline-dark mt-2"(click)="next()" >Next</button> -->
+                         <!-- <button [class.bg-danger]="isNextDisabled" [disabled]="isNextDisabled"  class="btn btn-outline-dark mt-2"(click)="next()" >Next</button>
+
+                     </div>
+               </div>
+                </div> -->
+

@@ -1,0 +1,148 @@
+<!-- <h1>{{this.registerForm.value|json}}</h1> -->
+<div class="signup-form container mt-5">
+  <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+    <h2>Sign Up</h2>
+    <p>Please fill in this form to create an account!</p>
+    <hr>
+
+    <!-- displayName -->
+    <div formGroupName="displayName" class="row">
+      <div class="col-md-6 mb-3">
+        <input formControlName="displayFirstName" type="text" class="form-control" placeholder="First Name">
+        <small style="color: red;" *ngIf="displayFirstName?.touched && displayFirstName?.errors?.['Required Ya Ahmed']">
+          <!-- هترجع ترو لو ال كي موجود -->
+          First Name Is Required
+        </small>
+      </div>
+      <div class="col-md-6 mb-3">
+        <input formControlName="displayLastName" type="text" class="form-control" placeholder="Last Name">
+        <small style="color: red;" *ngIf="displaylastName?.touched && displaylastName?.errors?.['required']">
+          <!-- هترجع ترو لو ال كي موجود -->
+          Last Name Is Required
+        </small>
+      </div>
+    </div>
+
+    <!-- Address -->
+    <div formGroupName="address" class="row">
+      <div class="col-md-6 mb-3">
+        <input formControlName="firstName" type="text" class="form-control" placeholder="Buyer First Name">
+        <small style="color: red;" *ngIf="addressFirstName?.touched && addressFirstName?.errors?.['required']">
+          <!-- هترجع ترو لو ال كي موجود -->
+          address FirstName Is Required
+        </small>
+      </div>
+      <div class="col-md-6 mb-3">
+        <input formControlName="lastName" type="text" class="form-control" placeholder="Buyer Last Name">
+        <small style="color: red;" *ngIf="addressLastName?.touched && addressLastName?.errors?.['required']">
+          <!-- هترجع ترو لو ال كي موجود -->
+          address LastName Is Required
+        </small>
+      </div>
+      <div class="col-md-4 mb-3">
+        <input formControlName="street" type="text" class="form-control" placeholder="Street">
+        <small style="color: red;" *ngIf="street?.touched && street?.errors?.['required']">
+          <!-- هترجع ترو لو ال كي موجود -->
+          street Is Required
+        </small>
+      </div>
+      <div class="col-md-4 mb-3">
+        <input formControlName="city" type="text" class="form-control" placeholder="City">
+        <small style="color: red;" *ngIf="city?.touched && city?.errors?.['required']">
+          <!-- هترجع ترو لو ال كي موجود -->
+          city Is Required
+        </small>
+      </div>
+      <div class="col-md-4 mb-3">
+        <input formControlName="country" type="text" class="form-control" placeholder="Country">
+        <small style="color: red;" *ngIf="country?.touched && country?.errors?.['required']">
+          <!-- هترجع ترو لو ال كي موجود -->
+          city Is Required
+        </small>
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3">
+      <input formControlName="email" type="text" class="form-control" placeholder="Email">
+      <small style="color: red;" *ngIf="email?.touched && email?.errors?.['required']">
+        <!-- هترجع ترو لو ال كي موجود -->
+        email Is Required
+      </small>
+      <small style="color: red;" *ngIf="email?.touched && email?.errors?.['email']">
+        <!-- هترجع ترو لو ال كي موجود -->
+        email style Is UnCorrect
+        <!-- بيبقي فاليد لو نال الاميل  -->
+      </small>
+    </div>
+
+    <!-- Password & Confirm -->
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <input formControlName="password" type="text" class="form-control" placeholder="Password">
+        <small style="color: red;" *ngIf="password?.touched && password?.errors?.['required']">
+          <!-- هترجع ترو لو ال كي موجود -->
+          password Is Required
+        </small>
+      </div>
+      <div class="col-md-6 mb-3">
+        <input formControlName="confirmPassword" type="text" class="form-control" placeholder="Confirm Password">
+        <small style="color: red;" *ngIf="confirmPassword?.touched && confirmPassword?.errors?.['required']">
+          <!-- هترجع ترو لو ال كي موجود -->
+          confirmPassword Is Required
+        </small>
+        <!-- عاوزها تظهر لما ال ريكويرد ميبقاش ب ترو -->
+        <small style="color: red;" *ngIf="(confirmPassword?.touched && registerForm?.errors?.['PassNotMatched'])">
+          <!-- هترجع ترو لو ال كي موجود -->
+          Pass Not Matched
+        </small>
+      </div>
+    </div>
+
+    <!-- Phone Numbers -->
+    <div formArrayName="phoneNumber" class="mb-3">
+      @for(phone of phoneArray.controls; track phone; let idx = $index) {
+        <div class="input-group mb-2">
+          <input [formControlName]="idx" type="text" class="form-control" placeholder="Phone Number" required="required">
+          <button *ngIf="!(phoneArray.length==1)" type="button" (click)="remove(idx)" class="btn btn-danger ms-2">-</button>
+        </div>
+        <!-- عاوز امسك ال انبوت اللي ف ال ارري -->
+        <small style="color: red;" *ngIf="phoneArray.controls[idx]?.touched && phoneArray.controls[idx]?.errors?.['required']">
+          <!-- هترجع ترو لو ال كي موجود -->
+          phoneNumber Is Required
+        </small>
+        <small style="color: red;" *ngIf="(phoneArray.controls[idx]?.touched && phoneArray.controls[idx]?.errors?.['MustBeNumber'])">
+          <!-- هترجع ترو لو ال كي موجود -->
+          phoneNumber Must Be Number!!
+        </small>
+
+          <small style="color: red;" *ngIf="(phoneArray.controls[idx]?.touched && phoneArray.controls[idx]?.errors?.['notPhoneNumber'])">
+          <!-- هترجع ترو لو ال كي موجود -->
+          phoneNumber Must Be 11 Degits!!
+        </small>
+      }
+    </div>
+
+    <!-- Add Phone Button -->
+    <button [disabled]="(phoneArray.length==3)" type="button" (click)="push()" class="btn btn-success mb-3">+</button>
+
+    <!-- Submit -->
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary btn-lg w-100">Sign Up</button>
+    </div>
+  </form>
+
+  <div class="hint-text text-center mt-3">Already have an account?
+    <a style="color: black;" href="#">Login here</a>
+  </div>
+  @if(errors)
+  {
+    <h5 style="color:red;">Error Occured While Registeration!</h5>
+  }
+  @for(err of errors;track err)
+  {
+    <small style="color:red;">{{err}}</small>
+    <br>
+  }
+
+</div>

@@ -1,0 +1,91 @@
+<!-- <h1>{{productCategoryId.errors|json}}</h1>
+<h1>{{productCategoryId.touched|json}}</h1> -->
+<!--  #productName="ngModel" علشان اعرف اشوف الخصائص اللي زي اللي فوق -->
+<form (ngSubmit)="AddProduct()" #form="ngForm">
+    <!-- (ngSubmit)="AddProduct()   مش هيتنفذ لو الفولت مش فاليد حتي لو شيلت [disabled]="!form.valid" -->
+
+    <div class="form-group">
+        <label>Product Name</label>
+        <input #productName="ngModel" type="text" class="form-control" required [(ngModel)]="Product.name" name="productName">
+
+                <!-- 
+            [(ngModel)] = two-way binding
+
+            [ngModel]         => ياخذ القيمة من الـ TypeScript ويحطها في الـ input
+            (ngModelChange)   => ياخذ القيمة من الـ input ويرجعها للـ TypeScript
+            -->
+
+
+        <!-- 
+type ValidationErrors = {
+    [key: string]: any;
+};        
+-->
+        <!-- @if(productName.errors!['required']) لو متاكد ان هيرجع وغلط طبعا 
+        {
+
+        } -->
+         <!-- @if(productName.errors&&productName.errors['required']) دي او ك شوجر اللي تحتها 
+        {
+
+        } -->
+                 @if(productName.touched&&productName.errors?.['required']) 
+                {
+                    <small  style="color:red;">required</small>
+                }
+    </div>
+
+    <div class="form-group">
+        <label>product CategoryId</label>
+        <select #productCategoryId="ngModel" required [(ngModel)]="Product.categoryId" name="productCategoryId" class="form-select">
+        <option [ngValue]="null" disabled >Select a Category</option>
+             @for(category of Categories; track category.id)
+            {
+            <option [ngValue]="category.id">{{category.name}}</option>
+            }   
+        </select>
+             @if(productCategoryId.touched&&productCategoryId.errors?.['required']) 
+                {
+                    <small  style="color:red;">required</small>
+                }
+    </div>
+
+    <div class="form-group">
+        <label>product Price</label>
+        <input #productPrice="ngModel" type="number" class="form-control"  required [(ngModel)]="Product.price" name="productPrice">
+       @if(productPrice.touched&&productPrice.errors?.['required']) 
+                {
+                    <small  style="color:red;">required</small>
+                }
+    </div>
+
+
+    <div class="form-group">
+        <label>product Quantity</label>
+        <input #productQuantity="ngModel" type="number" class="form-control" required [(ngModel)]="Product.quantity" name="productQuantity">
+       @if(productQuantity.touched&&productQuantity.errors?.['required']) 
+                {
+                    <small  style="color:red;">required</small>
+                }
+    </div>
+
+    <div class="form-group">
+        <label>product Picture</label>
+        <input  #productPicture="ngModel" type="file" class="form-control" ngModel name="productPicture" required (change)="onFileSelected($event)">
+     @if(productPicture.touched&&productPicture.errors?.['required']) 
+                {
+                    <small  style="color:red;">required</small>
+                }
+        <!-- مش هيتبعه ngForm الا لو كان معمول فيه ngModel , name -->
+    </div>
+
+    <button type="submit" [disabled]="!form.valid" class="btn btn-primary mt-3">Add Product</button>
+
+</form>
+
+<!-- 
+عاوز backend يعرف إنك بتقول "مفيش صورة"	بعتها null صراحةً
+القيمة	شكلها في JSON	المعنى
+null	"pictureUrl": null	معناها: مفيش صورة متاحة
+مش مرسلة	(مش موجودة)	معناها: مش معروف هل فيه صورة ولا لا
+-->

@@ -1,0 +1,112 @@
+
+
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+  <div class="container-fluid">
+      <button class="btn btn-success" 
+(click)="changeLang()">
+<p [innerHTML]="isAr?' اللغة الان العربية <br> Change Language To English ':' Language Now Is English <br>  تغيير اللغة إلي العربية'"></p>
+<!-- {{isAr?' اللغة الان العربية , Change Language To English ':' Language Now Is English , تغيير اللغة إلي العربية'}} -->
+
+</button>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul  [ngClass]="isAr?'navbar-nav  mb-2 mb-lg-0  ':'navbar-nav  mb-2 mb-lg-0 me-auto '">
+        <li class="nav-item">
+          <a class="nav-link active" ca aria-current="page" routerLink="/home"
+            routerLinkActive="active  bg-success">{{isAr?'الصفحة الرئيسية':'Home'}}</a>
+        </li>
+
+        @if(isLogin||isFindLocalHost)
+        {
+        <li class="nav-item">
+          <!-- <a class="nav-link"   (click)="goToOrder()" aria-current="page" >Order</a> -->
+          <a class="nav-link" routerLink="/totalOrder" routerLinkActive="active  bg-success"
+            aria-current="page">{{isAr?'المنتجات':'Products'}}</a>
+        </li>
+        }
+
+        @if(isLogin||isFindLocalHost)
+        {
+        <li class="nav-item">
+          <!-- <a class="nav-link"   (click)="goToOrder()" aria-current="page" >Order</a> -->
+          <a class="nav-link" routerLink="/addProduct" routerLinkActive="active  bg-success" aria-current="page">
+            {{isAr?'إضافة منتج':'Add Product'}} </a>
+        </li>
+
+        }
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/aboutUs"
+            routerLinkActive="active  bg-success">
+            {{isAr?'عنا':'About Us'}}
+            </a>
+        </li>
+
+        @if(!isFindLocalHost&&!isLogin)
+        {
+        <!-- عاوزة يعرض اللوجين لو ملقاش لوكال هوست او لو ملقاش انه لوجين  -->
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/login"
+            routerLinkActive="active  bg-success">
+            {{isAr?'تسجيل دخول':' Login'}}
+           </a>
+        </li>
+        }
+        @if(!isFindLocalHost&&!isLogin)
+        {
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/register"
+            routerLinkActive="active  bg-success">
+            {{isAr?'تسجيل حساب':'  Register'}}
+          </a>
+        </li>
+        }
+        @if(isLogin||isFindLocalHost)
+        {
+        <!-- عاوز لما يبقي فيه لوكال هوست موجود يعرض ال لوج اوت والاوردرز وميعرضش ال لوج ان -->
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" (click)="logout()" routerLink="/login"
+            routerLinkActive="active  bg-success">
+            {{isAr?'تسجيل خروج':'LogOut'}}
+            </a>
+        </li>
+        }
+
+
+
+
+
+
+      </ul>
+      <!-- <form class="d-flex" role="search">
+        <input #searchInput class="form-control me-2" (input)="fireSearch(searchInput.value)" type="search" placeholder="Search" aria-label="Search"/>
+      </form> -->
+
+      <form 
+      
+      [ngClass]="isAr?'d-flex  me-auto':'d-flex '"
+      
+      role="search">
+        <!-- <input [hidden]="!isOrderPage" #searchInput  class="form-control me-2" (input)="setSearch(searchInput.value)" type="search" placeholder="Search" aria-label="Search"/> -->
+        <input [hidden]="!isOrderPage" [ngModel]="APISearch" name="orderPage" (input)="OnChangeSearch($event)"
+          class="form-control me-2" type="search" 
+          [placeholder]="isAr?'بحث':'Search'"
+           aria-label="Search" />
+        <!-- اي فورم بتستخدم جواها ngModel لازم يبقي معاها name  -->
+      </form>
+
+    </div>
+  </div>
+</nav>
+
+
+
+
+

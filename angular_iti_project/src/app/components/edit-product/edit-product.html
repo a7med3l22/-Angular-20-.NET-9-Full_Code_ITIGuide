@@ -1,0 +1,64 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <form (ngSubmit)="submitForm()">
+          <div class="card-header text-center">
+            <h5>Update Product</h5>
+          </div>
+
+          <div class="card-body">
+            <!-- Image Preview -->
+            <div class="text-center mb-3">
+              <img *ngIf="!previewUrl" [src]="ExistImg+'?T='+dateTime" class="img-fluid" style="max-height: 300px;" [alt]="[product.pictureUrl.split('/')[product.pictureUrl.split('/').length-1]]" />
+              <img *ngIf="previewUrl" [src]="previewUrl" class="img-fluid" style="max-height: 300px;" alt="Product Picture" />
+            </div>
+
+            <!-- Upload Input -->
+            <div class="mb-3">
+              <label for="formFile" class="form-label">Change Image</label>
+              <input #uploadedFile class="form-control" type="file" id="formFile" (input)="AddImage($event)">
+              <button [disabled]="!removable" type="button" class="btn btn-danger btn-sm mt-2" (click)="removeUploadedImage()">Remove Image</button>
+            </div>
+
+            <!-- Name -->
+            <div class="mb-3">
+              <label class="form-label">Product Name</label>
+              <input type="text" class="form-control" name="name" [(ngModel)]="name">
+            </div>
+
+            <!-- Price -->
+            <div class="mb-3">
+              <label class="form-label">Price</label>
+              <input type="number" class="form-control" name="price" [(ngModel)]="price">
+            </div>
+
+            <!-- Quantity -->
+            <div class="mb-3">
+              <label class="form-label">Quantity</label>
+              <input type="number" class="form-control" name="quantity" [(ngModel)]="quantity">
+            </div>
+
+            <!-- Category -->
+            <div class="mb-3">
+              <label class="form-label">Category</label>
+              <select class="form-select" name="categoryId" [(ngModel)]="categoryId">
+                <option disabled selected>-- Select a Category --</option>
+                @for (cat of categories; track cat.id) {
+                  <option [ngValue]="cat.id">{{ cat.name }}</option>
+                }
+              </select>
+            </div>
+          </div>
+
+          <div class="card-footer text-center">
+            <button type="submit" class="btn btn-success">Update Product</button>
+          </div> 
+        </form>
+         <div class="card-footer text-center">
+            <button (click)="Back()" style="width: 130px;" class="btn btn-dark">Back</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

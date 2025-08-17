@@ -1,0 +1,24 @@
+   <div [attr.dir]="((langStore$|async)=='en')?'ltr':((langStore$|async)=='ar')?'rtl':'ltr'"> 
+ 
+  <!-- <div *ngIf="!isConnect">
+        <h1>Error With Connect To API</h1>
+    </div> -->
+<!-- <div *ngIf="isConnect"> -->
+<!-- <app-navbar  (OnSearch)="search=$event"></app-navbar>  -->
+<app-navbar  ></app-navbar> 
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 m-5">
+      <!-- <app-order [searchValue]="search" ></app-order>  -->
+      <router-outlet></router-outlet>
+      <!-- هيعمل تراك علي قيمة السيرش اللي موجوده ف الاب  وكل م تتغير هيبعتها ل سيرش فاليو اللي موجوده ف الابن -->
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+
+<!-- </div> -->
+</div>
+  
+
+  

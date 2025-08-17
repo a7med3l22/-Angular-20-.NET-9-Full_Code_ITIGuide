@@ -1,0 +1,77 @@
+
+<!-- <h1>Number is :{{num|power:5}}</h1> -->
+<!-- <button class="btn btn-outline-dark" (click)="changeColor('brown')" >Change Color</button>
+<button class="btn btn-outline-dark" (click)="changeColor('orange')" >Change Color</button>
+
+        <h1  [appChangeColor]="['blue']" [changeColor]="color"   externalColor class="mb-3"> -->
+         <!-- <h1  [appChangeColor]="['red','brown']" externalColor="gray" [changeprice]="TotalOrderprice" class="mb-3">  -->
+             <!-- أي عنصر HTML عليه Directive يعتبر هو الأب المباشر للـ Directive. -->
+              <!-- Total Order price = quantity*price  -->
+             <!-- Total Order price: {{TotalOrderprice}}  
+        </h1> -->
+        <!-- <h1 class="mb-3">
+            Selected Category Value:  {{value}}    
+        </h1> -->
+
+         <!-- <button class="btn btn-outline-success" (click)="setValue(1)">Select Laptop Category</button>
+         <button class="btn btn-outline-success" (click)="setValue(undefined)">Select All Category</button> -->
+
+
+     <!--   <select  class="form-select mb-3" aria-label="Default select example" [(ngModel)]="value"> تو واي بايندج -- لما بغير ف ال سيليكت اللي ف الفيو قيمة الفاليو هتتغير ولو غيرت ف قيمة الفاليو السيليكت اللي ف الفيو هيتغير -->  <!-- [(ngModel)]="value"    معناها ان لو حصل اي اتشينج ف ال سيليكت خد الفاليو بتاعتها وحطها ف ال فاليو دي -->
+       <!-- Two Way Binding:- ✅ لو المستخدم غيّر القيمة في الـ HTML: ** القيمة الجديدة ستذهب تلقائيًا إلى:this.value **✅ ولو غيّرت this.value من الكود: ** سيتغيّر المعروض في الـ HTML تلقائيًا.-->
+
+        <!-- <select  class="form-select mb-3"  [(ngModel)]="value" (ngModelChange)="onValueChange($event)" aria-label="Default select example" > -->
+        <select  class="form-select mb-3"  [ngModel]="value" (ngModelChange)="OnChangeValue($event)" aria-label="Default select example" >
+            
+            <!-- 
+            [(ngModel)] = two-way binding
+
+            [ngModel]         => ياخذ القيمة من الـ TypeScript ويحطها في الـ input
+            (ngModelChange)   => ياخذ القيمة من الـ input ويرجعها للـ TypeScript
+            -->
+            
+            <!-- برافو -->
+             
+                <option  [ngValue]="null"   *ngIf="filteredCategories.length>0">All Category</option>
+                <option   [ngValue]="null" *ngIf="filteredCategories.length==0">Empty Categories</option>
+           
+            <option  *ngFor="let category of filteredCategories"  [ngValue]="category.id" >
+               
+                {{category.name}}
+                <!-- {{ filteredCategories ? category.name : 'Deleted!' }} -->
+
+            </option> 
+            
+
+<!-- عاوزة يعرض الكاتيجوريز اللي موجوده ف البرودكتس بس  -->
+        </select>
+<!-- 
+<button class="btn btn-outline-dark my-3" (click)="addProduct()">Add Product</button> 
+<button class="btn btn-outline-dark mb-3" (click)="deleteAddedProduct(newlyAddedProduct)">Delete Added Product</button>  -->
+
+<!-- <app-product [search]="searchValue"  [receiveCategoryId]="value" (onChangeprice)="TotalOrderprice=$event" ></app-product>   -->
+
+
+<!-- <app-product [search]="searchValue"  [receiveCategoryId]="value" ></app-product>   -->
+<app-product></app-product>    
+<!-- عاوز ابعت قيمة الفاليو والسيرش لل اب برودكت  -->
+
+
+
+<!-- هيعمل تراك علي قيمة  سيرش فاليو اللي موجوده ف الاب  وكل م تتغير هيبعتها ل سيرش  اللي موجوده ف الابن -->
+<!-- 
+نعم ✅، هنا عندما تتغير قيمة value في الأب (Parent Component) سيتم:
+
+🔹 إعادة إرسال القيمة تلقائيًا إلى:
+
+<app-product [receiveCategoryId]="value"></app-product>
+🔹 Angular يعمل كالتالي:
+
+يراقب (Tracks) قيمة value في الأب.
+
+عند تغيرها، يعيد تمرير القيمة إلى Input receiveCategoryId داخل <app-product>.
+
+-->
+
+<!-- <input type="text" #input>  -->
+
